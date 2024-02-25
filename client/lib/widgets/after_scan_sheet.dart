@@ -22,7 +22,7 @@ class _AfterScanSheetState extends State<AfterScanSheet> {
 
   @override
   void initState() {
-    if (text.length > 2000) {
+    if (widget.text.length > 2000) {
       text = widget.text.substring(1, 2001);
     } else {
       text = widget.text;
@@ -39,6 +39,7 @@ class _AfterScanSheetState extends State<AfterScanSheet> {
         ? "${_scannedTextController.text.substring(0, 35).trim().replaceAll("\n", " ")}..."
         : _scannedTextController.text.trim().replaceAll("\n", " ");
     return Container(
+      color: Theme.of(context).colorScheme.background,
       constraints: const BoxConstraints.expand(),
       child: text.isNotEmpty
           ? ListView(
@@ -67,8 +68,8 @@ class _AfterScanSheetState extends State<AfterScanSheet> {
                         maxLines: null,
                         controller: _scannedTextController,
                         maxLength: 2000,
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 52, 53, 54),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                         decoration: InputDecoration(
                           hintText: "Type anything here...",
@@ -98,7 +99,7 @@ class _AfterScanSheetState extends State<AfterScanSheet> {
                     child: Container(
                       width: 150,
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 35, 35, 36),
+                        color: const Color.fromARGB(255, 52, 53, 54),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: TextButton(

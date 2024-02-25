@@ -28,38 +28,43 @@ class _ChatTextFieldState extends State<ChatTextField> {
         color: const Color.fromARGB(255, 52, 53, 54),
         borderRadius: BorderRadius.circular(20.0),
       ),
-      child: TextField(
-        maxLines: null,
-        controller: _userMessageController,
-        onSubmitted: (text) {
-          if (_userMessageController.text.isNotEmpty) {
-            sendMessage(_userMessageController.text);
-            _userMessageController.clear();
-          }
-        },
-        maxLength: 500,
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          hintText: "Type your questions here...",
-          counterStyle: const TextStyle(
-            color: Colors.white,
-          ),
-          hintStyle: TextStyle(color: Colors.grey[400]),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
-            borderSide: BorderSide.none,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-          suffixIcon: IconButton(
-            onPressed: () {
-              if (_userMessageController.text.isNotEmpty) {
-                sendMessage(_userMessageController.text);
-                _userMessageController.clear();
-                FocusManager.instance.primaryFocus?.unfocus();
-              }
-            },
-            icon: const Icon(Icons.send, color: Colors.white),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxHeight: 300.0,
+        ),
+        child: TextField(
+          maxLines: null,
+          controller: _userMessageController,
+          onSubmitted: (text) {
+            if (_userMessageController.text.isNotEmpty) {
+              sendMessage(_userMessageController.text);
+              _userMessageController.clear();
+            }
+          },
+          maxLength: 500,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintText: "Type your questions here...",
+            counterStyle: const TextStyle(
+              color: Colors.white,
+            ),
+            hintStyle: TextStyle(color: Colors.grey[400]),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(20.0),
+              borderSide: BorderSide.none,
+            ),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            suffixIcon: IconButton(
+              onPressed: () {
+                if (_userMessageController.text.isNotEmpty) {
+                  sendMessage(_userMessageController.text);
+                  _userMessageController.clear();
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+              },
+              icon: const Icon(Icons.send, color: Colors.white),
+            ),
           ),
         ),
       ),

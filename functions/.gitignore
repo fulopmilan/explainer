@@ -67,3 +67,5 @@ node_modules/
 
 # api keys there
 public/
+
+.firebaserc

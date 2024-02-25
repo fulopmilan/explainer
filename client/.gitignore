@@ -54,5 +54,6 @@ windows
 /lib/firebase_options.dart
 .firebase
 public
+.firebaserc
 
 .env

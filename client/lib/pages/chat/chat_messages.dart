@@ -14,7 +14,7 @@ class ChatMessages extends StatefulWidget {
 
 class _ChatMessagesState extends State<ChatMessages> {
   late List<dynamic> chatHistory;
-  bool _isVisible = true;
+  bool _isVisible = false;
 
   @override
   void initState() {
@@ -105,7 +105,10 @@ class _ChatMessagesState extends State<ChatMessages> {
                     scrollToBottom(widget.scrollController, context);
                   },
                   backgroundColor: const Color.fromARGB(255, 52, 53, 54),
-                  child: const Icon(Icons.arrow_downward),
+                  child: Icon(
+                    Icons.arrow_downward,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             ),

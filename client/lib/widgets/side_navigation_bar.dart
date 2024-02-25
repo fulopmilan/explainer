@@ -83,7 +83,7 @@ class _SideNavigationBarState extends State<SideNavigationBar> {
                   return GestureDetector(
                     onTap: () {
                       router.push(
-                        '/chat/${chatEntries[index].entryId}/${chatEntries[index].entryName}',
+                        '/chat/${chatEntries[index].entryId}/${Uri.encodeComponent(chatEntries[index].entryName)}',
                       );
                       Navigator.pop(context);
                     },

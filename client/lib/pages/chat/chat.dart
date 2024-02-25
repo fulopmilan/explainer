@@ -143,7 +143,7 @@ class _ChatState extends State<Chat> {
 
   // sends a message to the AI, and adds the same request into the chatHistory
   void sendMessage(String text) async {
-    if (chatHistory.length % 2 == 1) {
+    if (chatHistory.last != "Generating answer...") {
       setState(() {
         chatHistory.add(text);
         chatHistory.add("Generating answer...");
