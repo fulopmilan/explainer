@@ -14,7 +14,8 @@ Kliens oldalon
 Szerver oldalon
 1. Létre kell hozni egy új Firebase Function projektet ( https://firebase.google.com/docs/functions/get-started?gen=2nd )
 2. Be kell másolni minden fájlt és mappát a "functions" nevű mappából az új Firebase Function projektbe.
-3. Deploy ( https://firebase.google.com/docs/functions/get-started?gen=2nd#deploy-functions-to-a-production-environment )
+3. A .env-example fájlt ki kell tölteni ( https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key )
+4. Deploy ( https://firebase.google.com/docs/functions/get-started?gen=2nd#deploy-functions-to-a-production-environment )
 
 ## EN
 This application was made for the 20th Neumann Nemzetközi Tehetségkutató Programtermék Verseny.
