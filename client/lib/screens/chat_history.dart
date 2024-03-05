@@ -1,4 +1,4 @@
-import 'package:client/config/router.dart';
+import 'package:client/router/router.dart';
 import 'package:client/data/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

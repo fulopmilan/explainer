@@ -1,6 +1,6 @@
 import 'package:client/data/chat_buttons.dart';
-import 'package:client/pages/edit_chat_buttons/customize_chat_button_dialog.dart';
-import 'package:client/types/chat_button_type.dart';
+import 'package:client/screens/edit_chat_buttons/customize_chat_button_dialog.dart';
+import 'package:client/data/enums/chat_button_type.dart';
 import 'package:flutter/material.dart';
 
 class ChatButtonItem extends StatefulWidget {

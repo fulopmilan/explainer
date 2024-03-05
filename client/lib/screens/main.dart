@@ -1,5 +1,5 @@
-import 'package:client/config/router.dart';
-import 'package:client/widgets/side_navigation_bar.dart';
+import 'package:client/router/router.dart';
+import 'package:client/screens/chat_history.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

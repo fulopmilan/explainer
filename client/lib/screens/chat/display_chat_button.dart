@@ -1,4 +1,4 @@
-import 'package:client/types/chat_button_type.dart';
+import 'package:client/data/enums/chat_button_type.dart';
 import 'package:flutter/material.dart';
 
 class DisplayChatButton extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:client/config/router.dart';
+import 'package:client/router/router.dart';
 import 'package:client/data/user.dart';
-import 'package:client/functions/add_or_update_user_entry.dart';
+import 'package:client/utilities/database/add_or_update_user_entry.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

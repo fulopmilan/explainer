@@ -1,8 +1,8 @@
-import 'package:client/config/router.dart';
+import 'package:client/router/router.dart';
 import 'package:client/data/user.dart';
 import 'package:client/firebase_options.dart';
-import 'package:client/theme/dark_theme.dart';
-import 'package:client/theme/light_theme.dart';
+import 'package:client/themes/dark_theme.dart';
+import 'package:client/themes/light_theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

@@ -1,4 +1,4 @@
-import 'package:client/types/chat_button_type.dart';
+import 'package:client/data/enums/chat_button_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 List<ChatButton> defaultButtons = [

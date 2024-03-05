@@ -1,6 +1,25 @@
 # explainer
+
 ## HU
 Ez az alkalmazás a 20. Neumann Nemzetközi Tehetségkutató Programtermék Versenyre készült.
+
+### Program célja
+Az alkalmazás fő célja a diákok tanulási folyamatának megkönnyítése annyira, hogy egy nagyon kevés erőfeszítéssel is könnyen meg tudjanak tanulni egy anyagrészt.
+
+Az applikáció egy szövegfelismerés technológiát használ, amely beolvassa a szöveget. Ezután a felhasználó kérdéseket tehet fel a beszkennelt szövegről, akár megkérheti az applikációt hogy foglalja össze a szöveget, vagy készítsen róla egy kvízt, aminek a segítségével könnyebben értelmezhető, és megtanulható lesz a tananyag.
+
+Az alkalmazás beszélgető felületében beépített gombok vannak, amik megakadályozzák azt hogy a tanulóknak folyamatosan, minden egyes szkennelés után meg kelljen ismételjük önmagukat, így növelve a hatékonyságukat. Ezeket a gombokat a felhasználó nagyon egyszerűen tudja módosítani is saját tetszésére. Az egyik alapvető gomb például a "Kvíz" gomb, amely a beszkennelt szöveg alapján automatikusan kvízt készít a tanulónak, amivel ellenőrizheti a tudását.
+
+### Használati utasítás
+Első indítás esetén be kell jelentkezni az applikációba Google-t használva.
+
+Más esetben az alkalmazás elindítása után (Explainer.apk) a kezdőlapon a kívánt szöveget lefotózzuk és kivágjuk, az “Ask questions!” gomb megnyomása után a megjelenő beszélgető ablakban tudunk az alkalmazásban kérdéseket feltenni.
+A szövegdoboz felett megjelenő gombok a gyorsgombok. A legbaloldalibb gyorsgomb segítségével be tudunk szkennelni extra szöveget a beszélgetésbe. A többi gyorsgombot tudjuk módosítani.
+
+Ha módosítani szeretnénk a gyorsgombokat, a kezdőlapon a jobb felső gomb megnyomásával megnyitjuk a beállítások fület, ahol az “Edit chat buttons” gomb segítségével megnyitjuk a gyorsgomb módosító ablakot.
+Megnyomjuk annak a gombnak a nevét amit módosítani szeretnénk, és az ott megjelenő ablakban tudjuk módosítani a nevét és a parancsát.
+
+Ha ki szeretnénk jelentkezni az alkalmazásból, a beállítások fülben a “Sign out” gombbal megtehetjük.
 
 ### Ahhoz, hogy futtassuk a kódot
 Kliens oldalon
@@ -19,6 +38,24 @@ Szerver oldalon
 
 ## EN
 This application was made for the 20th Neumann Nemzetközi Tehetségkutató Programtermék Verseny.
+
+### Purpose of the Program
+The main purpose of the application is to facilitate the learning process for students so that they can easily learn a subject with minimal effort.
+
+The application utilizes text recognition technology to scan text. Afterwards, the user can ask questions about the scanned text, request a summary of the text, or create a quiz from it to make the material more comprehensible and easier to learn.
+
+The built-in buttons in the chat interface of the application prevent students from having to repeat themselves after each scan, thus increasing their efficiency. Users can easily customize these buttons according to their preferences. One fundamental button, for example, is the "Quiz" button, which automatically generates a quiz based on the scanned text for the student to test their knowledge.
+
+### User Instructions
+Upon first launch, users need to sign in to the application using Google.
+
+Subsequently, after launching the application (Explainer.apk), on the home screen, users capture and crop the desired text, then press the "Ask questions!" button to ask questions in the chat window.
+The buttons appearing above the text box are quick buttons. Using the leftmost quick button, users can scan additional text into the conversation. Other quick buttons can be customized.
+
+To modify the quick buttons, users open the settings tab by pressing the top right button on the home screen, where they can open the button editor window with the "Edit chat buttons" button.
+Pressing the name of the button they want to modify, users can change its name and command in the window that appears.
+
+To log out of the application, users can use the "Sign out" button in the settings tab.
 
 ### To run the code
 Client-side

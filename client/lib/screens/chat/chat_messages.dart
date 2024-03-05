@@ -1,4 +1,4 @@
-import 'package:client/functions/scroll_controller.dart';
+import 'package:client/utilities/scroll/scroll_controller.dart';
 import 'package:client/widgets/expandable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

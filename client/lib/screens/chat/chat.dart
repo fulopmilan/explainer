@@ -1,10 +1,10 @@
-import 'package:client/config/router.dart';
+import 'package:client/router/router.dart';
 import 'package:client/data/user.dart';
-import 'package:client/pages/chat/chat_buttons.dart';
-import 'package:client/pages/chat/chat_messages.dart';
-import 'package:client/pages/chat/chat_textfield.dart';
-import 'package:client/functions/save_chat_to_database.dart';
-import 'package:client/functions/scroll_controller.dart';
+import 'package:client/screens/chat/chat_buttons.dart';
+import 'package:client/screens/chat/chat_messages.dart';
+import 'package:client/screens/chat/chat_textfield.dart';
+import 'package:client/utilities/database/save_chat_to_database.dart';
+import 'package:client/utilities/scroll/scroll_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';

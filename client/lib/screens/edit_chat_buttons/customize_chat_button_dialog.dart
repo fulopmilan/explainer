@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:client/data/chat_buttons.dart';
-import 'package:client/types/chat_button_type.dart';
+import 'package:client/data/enums/chat_button_type.dart';
 
 class CustomizeChatButtonDialog extends StatelessWidget {
   const CustomizeChatButtonDialog(this.refreshWidget,

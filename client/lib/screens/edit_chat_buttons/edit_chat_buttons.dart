@@ -1,6 +1,6 @@
 import 'package:client/data/chat_buttons.dart';
-import 'package:client/pages/edit_chat_buttons/chat_button_item.dart';
-import 'package:client/pages/edit_chat_buttons/customize_chat_button_dialog.dart';
+import 'package:client/screens/edit_chat_buttons/chat_button_item.dart';
+import 'package:client/screens/edit_chat_buttons/customize_chat_button_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

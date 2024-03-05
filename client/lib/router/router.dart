@@ -1,9 +1,9 @@
-import 'package:client/pages/chat/chat.dart';
-import 'package:client/pages/edit_chat_buttons/edit_chat_buttons.dart';
-import 'package:client/pages/main.dart';
-import 'package:client/pages/main/home.dart';
-import 'package:client/pages/main/settings.dart';
-import 'package:client/pages/sign_in.dart';
+import 'package:client/screens/chat/chat.dart';
+import 'package:client/screens/edit_chat_buttons/edit_chat_buttons.dart';
+import 'package:client/screens/main.dart';
+import 'package:client/screens/main/home.dart';
+import 'package:client/screens/main/settings.dart';
+import 'package:client/screens/sign_in.dart';
 
 import 'package:go_router/go_router.dart';
 

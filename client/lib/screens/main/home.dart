@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:client/functions/crop_image.dart';
-import 'package:client/functions/image_to_text.dart';
-import 'package:client/widgets/after_scan_sheet.dart';
+import 'package:client/utilities/image/crop_image.dart';
+import 'package:client/utilities/image/image_to_text.dart';
+import 'package:client/screens/main/show_scanned_text/after_scan_sheet.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter/material.dart';
