@@ -54,6 +54,10 @@ class _ChatState extends State<Chat> {
   }
 
   void modifyEntryNameByEntryId(String newEntryName) async {
+    if (newEntryName.isEmpty) {
+      newEntryName = "Unnamed";
+    }
+
     CollectionReference userEntryList =
         FirebaseFirestore.instance.collection('UserEntryList');
 
@@ -174,6 +178,122 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
+    final Color dialogBackgroundColor =
+        Theme.of(context).colorScheme.background;
+    final Color textColor = Theme.of(context).colorScheme.primary;
+    final Color buttonColor = Theme.of(context).colorScheme.primary;
+
+    Widget chatRenameDialog(BuildContext ctx) {
+      TextEditingController renameController = TextEditingController();
+      return Dialog(
+        backgroundColor: dialogBackgroundColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 0,
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: renameController,
+                decoration: InputDecoration(
+                  label: const Text("New entry name"),
+                  hintStyle: TextStyle(color: textColor),
+                  border: const OutlineInputBorder(),
+                ),
+                style: TextStyle(color: textColor),
+              ),
+              const SizedBox(height: 20.0),
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {
+                    modifyEntryNameByEntryId(renameController.text);
+                    Navigator.pop(context);
+                    Navigator.pop(ctx);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: buttonColor,
+                    padding: const EdgeInsets.symmetric(vertical: 15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: Text(
+                    "Apply",
+                    style: TextStyle(color: dialogBackgroundColor),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget settingsDialog = Dialog(
+      backgroundColor: dialogBackgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 0,
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 300,
+              child: ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (ctx) {
+                      return chatRenameDialog(ctx);
+                    },
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: buttonColor,
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: Text(
+                  "Edit name",
+                  style: TextStyle(color: dialogBackgroundColor),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20.0),
+            SizedBox(
+              width: 300,
+              child: ElevatedButton(
+                onPressed: () {
+                  deleteEntryByEntryId();
+                  router.go('/home');
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: buttonColor,
+                  padding: const EdgeInsets.symmetric(vertical: 15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+                child: Text(
+                  "Delete entry",
+                  style: TextStyle(color: dialogBackgroundColor),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
@@ -182,55 +302,7 @@ class _ChatState extends State<Chat> {
               showDialog(
                 context: context,
                 builder: (_) {
-                  return AlertDialog(
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                            showDialog(
-                              context: context,
-                              builder: (ctx) {
-                                return AlertDialog(
-                                  content: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      TextField(
-                                        controller: renameController,
-                                        decoration: const InputDecoration(
-                                          hintText: "New entry name",
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        modifyEntryNameByEntryId(
-                                            renameController.text);
-                                        Navigator.pop(ctx);
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text("Apply"),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          child: const Text("Edit name"),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            deleteEntryByEntryId();
-                            router.go('/home');
-                          },
-                          child: const Text("Delete entry"),
-                        ),
-                      ],
-                    ),
-                  );
+                  return settingsDialog;
                 },
               );
             },

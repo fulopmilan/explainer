@@ -5,8 +5,6 @@ import 'package:client/functions/image_to_text.dart';
 import 'package:client/widgets/after_scan_sheet.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../widgets/camera/button.dart';
-
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 
@@ -61,6 +59,98 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    Widget takePictureButton = GestureDetector(
+      onTap: () async {
+        try {
+          cameraController.takePicture().then(
+            (XFile? file) {
+              if (mounted) {
+                if (file != null) {
+                  cropImage(file.path, context).then(
+                    (path) => imageToText(File(path!)).then(
+                      (text) => showText(text),
+                    ),
+                  );
+                }
+              }
+            },
+          );
+        } catch (error) {
+          print(error);
+        }
+      },
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          margin: const EdgeInsets.only(
+            left: 20,
+            bottom: 20,
+          ),
+          height: 75,
+          width: 75,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Theme.of(context).colorScheme.background,
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 66, 66, 66),
+                blurRadius: 5.0,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Icon(
+              Icons.photo_camera,
+              color: Theme.of(context).colorScheme.primary,
+              size: 36,
+            ),
+          ),
+        ),
+      ),
+    );
+    Widget selectPictureButton = GestureDetector(
+      onTap: () async {
+        try {
+          final returnedImage =
+              await ImagePicker().pickImage(source: ImageSource.gallery);
+
+          if (returnedImage != null) {
+            cropImage(returnedImage.path, context).then((path) =>
+                imageToText(File(path!)).then((text) => showText(text)));
+          }
+        } catch (error) {
+          print(error);
+        }
+      },
+      child: Align(
+        alignment: Alignment.bottomRight,
+        child: Container(
+          margin: const EdgeInsets.only(
+            left: 20,
+            bottom: 20,
+          ),
+          height: 50,
+          width: 50,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Theme.of(context).colorScheme.background,
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 66, 66, 66),
+                blurRadius: 5.0,
+              ),
+            ],
+          ),
+          child: Center(
+            child: Icon(
+              Icons.image,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+        ),
+      ),
+    );
+
     if (cameraController.value.isInitialized) {
       return Scaffold(
         body: Stack(
@@ -71,80 +161,11 @@ class _HomeState extends State<Home> {
               child: CameraPreview(cameraController),
             ),
             Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  GestureDetector(
-                    onTap: () async {
-                      try {
-                        cameraController.takePicture().then(
-                          (XFile? file) {
-                            if (mounted) {
-                              if (file != null) {
-                                cropImage(file.path, context).then(
-                                  (path) => imageToText(File(path!)).then(
-                                    (text) => showText(text),
-                                  ),
-                                );
-                              }
-                            }
-                          },
-                        );
-                      } catch (error) {
-                        print(error);
-                      }
-                    },
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Container(
-                        margin: const EdgeInsets.only(
-                          left: 20,
-                          bottom: 20,
-                        ),
-                        height: 75,
-                        width: 75,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromARGB(255, 66, 66, 66),
-                              blurRadius: 5.0,
-                            ),
-                          ],
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.photo_camera,
-                            color: Color.fromARGB(255, 28, 28, 28),
-                            size: 36,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              child: takePictureButton,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: GestureDetector(
-                onTap: () async {
-                  try {
-                    final returnedImage = await ImagePicker()
-                        .pickImage(source: ImageSource.gallery);
-
-                    if (returnedImage != null) {
-                      cropImage(returnedImage.path, context).then((path) =>
-                          imageToText(File(path!))
-                              .then((text) => showText(text)));
-                    }
-                  } catch (error) {
-                    print(error);
-                  }
-                },
-                child: button(Alignment.bottomRight, Icons.image),
-              ),
+              child: selectPictureButton,
             ),
           ],
         ),

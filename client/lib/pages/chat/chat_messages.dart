@@ -1,4 +1,5 @@
 import 'package:client/functions/scroll_controller.dart';
+import 'package:client/widgets/expandable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -31,7 +32,7 @@ class _ChatMessagesState extends State<ChatMessages> {
   void _scrollListener() {
     if (widget.scrollController.position.maxScrollExtent -
             widget.scrollController.position.pixels >
-        200) {
+        500) {
       setState(() {
         _isVisible = true;
       });
@@ -57,34 +58,61 @@ class _ChatMessagesState extends State<ChatMessages> {
                 margin: const EdgeInsets.symmetric(vertical: 5),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Align(
-                      alignment: index % 2 == 0
-                          ? Alignment.centerLeft
-                          : Alignment.centerRight,
-                      child: Text(
-                        index % 2 == 0 ? "Robot" : "User",
-                        style: GoogleFonts.montserrat(
-                          fontSize: 12,
-                          color: const Color.fromARGB(255, 139, 139, 139),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: index % 2 == 0
-                          ? Alignment.centerLeft
-                          : Alignment.centerRight,
-                      child: Text(
-                        chatHistory[index],
-                        textAlign:
-                            index % 2 == 0 ? TextAlign.left : TextAlign.right,
-                        style: GoogleFonts.sourceSans3(
-                          fontSize: 15,
-                        ),
-                      ),
-                    ),
-                  ],
+                  children: index == 0
+                      ? [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              "Topic",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 12,
+                                color: const Color.fromARGB(255, 139, 139, 139),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: ExpandableWidget(
+                              Text(
+                                chatHistory[index],
+                                textAlign: TextAlign.left,
+                                style: GoogleFonts.sourceSans3(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ]
+                      : [
+                          Align(
+                            alignment: index % 2 == 0
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
+                            child: Text(
+                              index % 2 == 0 ? "Robot" : "User",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 12,
+                                color: const Color.fromARGB(255, 139, 139, 139),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: index % 2 == 0
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
+                            child: Text(
+                              chatHistory[index],
+                              textAlign: index % 2 == 0
+                                  ? TextAlign.left
+                                  : TextAlign.right,
+                              style: GoogleFonts.sourceSans3(
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
                 ),
               );
             },

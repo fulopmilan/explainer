@@ -1,65 +1,120 @@
+import 'package:flutter/material.dart';
 import 'package:client/data/chat_buttons.dart';
 import 'package:client/types/chat_button_type.dart';
-import 'package:flutter/material.dart';
 
 class CustomizeChatButtonDialog extends StatelessWidget {
   const CustomizeChatButtonDialog(this.refreshWidget,
-      {super.key, this.currentChatButton});
+      {Key? key, this.currentChatButton})
+      : super(key: key);
+
   final ChatButton? currentChatButton;
   final Function() refreshWidget;
 
   @override
   Widget build(BuildContext context) {
+    final Color dialogBackgroundColor =
+        Theme.of(context).colorScheme.background;
+    final Color textColor = Theme.of(context).colorScheme.primary;
+    final Color buttonColor = Theme.of(context).colorScheme.primary;
+
     final TextEditingController buttonTextController =
         TextEditingController(text: currentChatButton?.buttonText ?? "");
     final TextEditingController displayTextController =
-        TextEditingController(text: currentChatButton?.displayText ?? "");
+        TextEditingController(text: currentChatButton?.contentText ?? "");
 
-    return AlertDialog(
-      title: Text(currentChatButton == null ? "Create Button" : "Edit Button"),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(
-            controller: buttonTextController,
-            decoration: const InputDecoration(
-              hintText: "Enter Button Text",
-              label: Text("Button text"),
-            ),
-          ),
-          TextField(
-            controller: displayTextController,
-            decoration: const InputDecoration(
-              hintText: "Enter Display Text",
-              label: Text("Display text"),
-            ),
-            maxLength: 500,
-          ),
-        ],
+    return Dialog(
+      backgroundColor: dialogBackgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
       ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            if (currentChatButton != null) {
-              editChatButton(
-                displayTextController.text,
-                buttonTextController.text,
-                currentChatButton!,
-              );
-            } else {
-              addChatButton(
-                displayTextController.text,
-                buttonTextController.text,
-              );
-            }
+      elevation: 0,
+      child: Container(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              currentChatButton == null ? "Create Button" : "Edit Button",
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: textColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20.0),
+            TextFormField(
+              controller: buttonTextController,
+              decoration: InputDecoration(
+                labelText: "Button Text",
+                border: const OutlineInputBorder(),
+                labelStyle: TextStyle(color: textColor),
+              ),
+              style: TextStyle(color: textColor),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter button text';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 20.0),
+            TextFormField(
+              controller: displayTextController,
+              decoration: InputDecoration(
+                labelText: "Display Text",
+                border: const OutlineInputBorder(),
+                labelStyle: TextStyle(color: textColor),
+              ),
+              style: TextStyle(color: textColor),
+              maxLines: 3,
+              maxLength: 500,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter display text';
+                }
+                return null;
+              },
+            ),
+            const SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                if (currentChatButton != null) {
+                  editChatButton(
+                    displayTextController.text,
+                    buttonTextController.text,
+                    currentChatButton!,
+                  );
+                } else {
+                  addChatButton(
+                    displayTextController.text,
+                    buttonTextController.text,
+                  );
+                }
 
-            refreshWidget();
+                refreshWidget();
 
-            Navigator.pop(context);
-          },
-          child: const Text("Apply"),
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 15.0),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                backgroundColor: buttonColor,
+              ),
+              child: Text(
+                "Apply",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).colorScheme.background,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

@@ -15,7 +15,7 @@ class DisplayChatButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () {
-          sendMessage(chatButtonData.displayText);
+          sendMessage(chatButtonData.contentText);
         },
         child: Text(
           chatButtonData.buttonText,

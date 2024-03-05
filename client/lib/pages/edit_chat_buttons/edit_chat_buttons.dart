@@ -27,6 +27,7 @@ class _EditChatButtonsState extends State<EditChatButtons> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 52, 53, 54),
+        foregroundColor: Colors.white,
         onPressed: () {
           showDialog(
             context: context,

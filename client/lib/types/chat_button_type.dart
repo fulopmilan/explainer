@@ -2,19 +2,19 @@ import 'dart:convert';
 
 class ChatButton {
   //requestText is the text that is sent to the server, displayText appears in the chatbox, buttonText is on the button
-  late String displayText, buttonText;
+  late String contentText, buttonText;
 
-  ChatButton({required this.displayText, required this.buttonText});
+  ChatButton({required this.contentText, required this.buttonText});
 
   factory ChatButton.fromJson(Map<String, dynamic> jsonData) {
     return ChatButton(
-      displayText: jsonData['displayText'],
+      contentText: jsonData['contentText'],
       buttonText: jsonData['buttonText'],
     );
   }
 
   static Map<String, dynamic> toMap(ChatButton chatButton) => {
-        'displayText': chatButton.displayText,
+        'contentText': chatButton.contentText,
         'buttonText': chatButton.buttonText,
       };
 
