@@ -1,7 +1,8 @@
 # explainer
-
+### <a href="https://trello.com/b/HiLheVXw/explainer-app">Trello<a/>
 ## HU
 Ez az alkalmazás a 20. Neumann Nemzetközi Tehetségkutató Programtermék Versenyre készült.
+<a href="https://www.youtube.com/watch?v=X8COxr6bHpw">Bemutató videó<a/>
 
 ### Program célja
 Az alkalmazás fő célja a diákok tanulási folyamatának megkönnyítése annyira, hogy egy nagyon kevés erőfeszítéssel is könnyen meg tudjanak tanulni egy anyagrészt.
